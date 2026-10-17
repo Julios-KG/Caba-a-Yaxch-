@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cabaña Yaxché · Cabañas Aldea Maya</title>
+<meta name="description" content="Cabañas Aldea Maya – Comparte tu experiencia / Share your experience.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#1a9bd0;
+    --green:#1b3a1f;
+    --olive:#6b8a3a;
+    --ink:#222;
+    --bg:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Lora',Georgia,'Times New Roman',serif;
+    line-height:1.55;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+  }
+  main{
+    width:100%;
+    max-width:720px;
+    padding:clamp(20px,5vw,48px) clamp(18px,5vw,40px) 40px;
+    text-align:center;
+  }
+
+  /* Logo */
+  .brand{display:flex;flex-direction:column;align-items:center;gap:10px}
+  .logo{display:flex;align-items:center;justify-content:center;gap:clamp(12px,3vw,24px)}
+  .logo svg.pyr{width:clamp(110px,26vw,190px);height:auto;flex:none}
+  .logo .divider{width:2px;align-self:stretch;background:var(--blue);opacity:.9}
+  .logo .name{
+    font-family:'Playfair Display',Georgia,serif;
+    font-weight:800;
+    color:var(--blue);
+    text-align:left;
+    font-size:clamp(30px,8.2vw,56px);
+    line-height:1;
+    letter-spacing:-.5px;
+  }
+  .tagline{
+    color:var(--blue);
+    font-size:clamp(15px,3.6vw,22px);
+    letter-spacing:.14em;
+    font-family:'Lora',Georgia,serif;
+  }
+
+  /* Title */
+  .cabin{
+    display:flex;align-items:center;gap:clamp(10px,3vw,24px);
+    margin:clamp(22px,5vw,38px) 0 clamp(18px,4vw,28px);
+  }
+  .cabin::before,.cabin::after{content:"";flex:1;height:2px;background:var(--olive);opacity:.8}
+  .cabin h1{
+    font-family:'Playfair Display',Georgia,serif;
+    font-weight:800;
+    color:var(--green);
+    font-size:clamp(34px,9vw,64px);
+    line-height:1.05;
+    white-space:nowrap;
+  }
+
+  p{font-size:clamp(16px,3.5vw,21px);max-width:34em;margin-inline:auto}
+  h2{
+    font-family:'Playfair Display',Georgia,serif;
+    color:var(--green);
+    font-size:clamp(21px,5vw,32px);
+    line-height:1.25;
+    margin:clamp(20px,4vw,30px) auto clamp(10px,2vw,14px);
+  }
+  .cta{
+    font-family:'Playfair Display',Georgia,serif;
+    color:var(--green);
+    font-size:clamp(22px,5.4vw,34px);
+    font-weight:700;
+    margin:clamp(22px,5vw,34px) 0 10px;
+  }
+  .thanks{margin-bottom:clamp(20px,4vw,30px)}
+
+  /* Review buttons */
+  .links{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:14px;
+    margin:8px auto 0;
+    max-width:620px;
+  }
+  .link{
+    flex:0 1 calc(33.333% - 10px);
+    min-width:140px;
+    min-height:116px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+    padding:18px 10px;
+    border:2px solid #e3eadb;
+    border-radius:18px;
+    background:#fff;
+    color:var(--green);
+    text-decoration:none;
+    font-weight:500;
+    font-size:clamp(15px,3.4vw,18px);
+    box-shadow:0 2px 8px rgba(27,58,31,.06);
+    transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .link svg{width:46px;height:46px}
+  .link:hover,.link:focus-visible{
+    transform:translateY(-3px);
+    border-color:var(--olive);
+    box-shadow:0 8px 20px rgba(27,58,31,.15);
+    outline:none;
+  }
+  .link:active{transform:scale(.98)}
+
+  /* Languages */
+  .langs{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:6px 4px;
+    margin:0 0 clamp(18px,4vw,28px);
+    padding-bottom:14px;
+    border-bottom:2px solid var(--olive);
+  }
+  .langs button{
+    font:inherit;
+    font-size:clamp(15px,3.4vw,19px);
+    color:var(--green);
+    background:none;border:0;cursor:pointer;
+    padding:8px 12px;border-radius:999px;
+  }
+  .langs button + button::before{content:"·";margin-right:16px;margin-left:-4px;color:var(--green);pointer-events:none}
+  .langs button[aria-pressed="true"]{background:var(--green);color:#fff}
+  .langs button[aria-pressed="true"]::before{color:transparent}
+  .langs button:hover{text-decoration:underline}
+  .langs button[aria-pressed="true"]:hover{text-decoration:none}
+  .langs button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+  @media (max-width:420px){
+    .links{gap:12px}
+    .link{flex:0 1 calc(50% - 6px);min-width:0;min-height:104px}
+    .langs button + button::before{display:none}
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <div class="langs" role="group" aria-label="Language">
+    <button type="button" data-lang="es">Español</button>
+    <button type="button" data-lang="en">English</button>
+    <button type="button" data-lang="fr">Français</button>
+    <button type="button" data-lang="de">Deutsch</button>
+    <button type="button" data-lang="da">Dansk</button>
+  </div>
+
+  <header class="brand">
+    <div class="logo">
+      <svg class="pyr" viewBox="0 0 280 190" role="img" aria-label="Cabañas Aldea Maya">
+        <g fill="#1a9bd0">
+          <rect x="110" y="0"   width="60"  height="20"/>
+          <rect x="92"  y="27"  width="96"  height="20"/>
+          <rect x="74"  y="54"  width="132" height="20"/>
+          <rect x="56"  y="81"  width="168" height="20"/>
+          <rect x="38"  y="108" width="204" height="20"/>
+          <rect x="20"  y="135" width="240" height="20"/>
+          <rect x="0"   y="162" width="280" height="20"/>
+        </g>
+        <g stroke="#fff" stroke-width="9" fill="none">
+          <line x1="140" y1="-4" x2="104" y2="190"/>
+          <line x1="140" y1="-4" x2="176" y2="190"/>
+        </g>
+        <g fill="#1a9bd0">
+          <rect x="126" y="54"  width="28" height="20"/>
+          <rect x="120" y="108" width="40" height="20"/>
+        </g>
+      </svg>
+      <span class="divider" aria-hidden="true"></span>
+      <div class="name">Cabañas<br>Aldea<br>Maya</div>
+    </div>
+    <div class="tagline" data-i18n="tagline">Tu hogar lejos de casa</div>
+  </header>
+
+  <div class="cabin"><h1>Cabaña Yaxché</h1></div>
+
+  <p data-i18n="p1"></p>
+
+  <h2 data-i18n="headline"></h2>
+
+  <p data-i18n="p2"></p>
+
+  <div class="cta" data-i18n="cta"></div>
+  <p class="thanks" data-i18n="thanks"></p>
+
+  <nav class="links" aria-label="Reviews">
+    <a class="link" target="_blank" rel="noopener noreferrer"
+       href="https://search.google.com/local/writereview?placeid=ChIJxYy-B2wfWY8R7J_vTyP4AWE">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+        <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+        <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+      </svg>
+      <span>Google</span>
+    </a>
+
+    <a class="link" target="_blank" rel="noopener noreferrer"
+       href="https://www.booking.com/hotel/mx/cabanas-aldea-maya.es.html?aid=1263239&amp;label=PShare-Pulse-u6ztWY%401769738941&amp;sid=5314220b4b401c15df5e60fa8e4dbe1f&amp;dist=0&amp;keep_landing=1&amp;sb_price_type=total&amp;type=total&amp;">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <rect width="48" height="48" rx="9" fill="#003580"/>
+        <text x="13" y="36" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="34" fill="#fff">B</text>
+        <circle cx="35" cy="33" r="3.2" fill="#009fe3"/>
+      </svg>
+      <span>Booking.com</span>
+    </a>
+
+    <a class="link" target="_blank" rel="noopener noreferrer"
+       href="https://www.airbnb.mx/rooms/1564531124005389278?viralityEntryPoint=1&amp;s=76&amp;_set_bev_on_new_domain=1754549712_EAYmRhOTQzM2Q3Zj&amp;set_everest_cookie_on_new_domain=1754549712.EANDViM2FmYWQ4ZjFhMD.q19IhPXibAGwjNnoysuEIJXucqqawGHXvf86y2gRWFM&amp;source_impression_id=p3_1769742527_P3-eZk0Doi_jF3i1">
+      <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#FF5A5F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 16.5c-1.6-2-2.4-3.6-2.4-4.9 0-1.4 1-2.4 2.4-2.4s2.4 1 2.4 2.4c0 1.3-.8 2.9-2.4 4.9z"/>
+        <path d="M12 16.5c-2.2 2.9-4 4.4-5.7 4.4-2 0-3.2-1.6-3.2-3.3 0-.7.2-1.4.6-2.2L9.4 5.4C10 4.2 10.8 3.5 12 3.5s2 .7 2.6 1.9l5.7 10c.4.8.6 1.5.6 2.2 0 1.7-1.2 3.3-3.2 3.3-1.7 0-3.5-1.5-5.7-4.4z"/>
+      </svg>
+      <span>Airbnb</span>
+    </a>
+
+    <a class="link" target="_blank" rel="noopener noreferrer"
+       href="https://www.facebook.com/Aldeamayac?rdid=UENY9hcG8dcz9StR&amp;share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19vg9BLf5m%2F#">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="#1877F2" d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.7 4.53-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/>
+      </svg>
+      <span>Facebook</span>
+    </a>
+
+    <a class="link" target="_blank" rel="noopener noreferrer"
+       href="https://www.instagram.com/aldeamayac?utm_source=qr&amp;igsh=OTk0YzhjMDVlZA%3D%3D">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <defs>
+          <linearGradient id="ig" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0" stop-color="#FEDA75"/>
+            <stop offset=".35" stop-color="#FA7E1E"/>
+            <stop offset=".6" stop-color="#D62976"/>
+            <stop offset=".8" stop-color="#962FBF"/>
+            <stop offset="1" stop-color="#4F5BD5"/>
+          </linearGradient>
+        </defs>
+        <rect width="48" height="48" rx="12" fill="url(#ig)"/>
+        <rect x="9.5" y="9.5" width="29" height="29" rx="8.5" fill="none" stroke="#fff" stroke-width="3"/>
+        <circle cx="24" cy="24" r="6.8" fill="none" stroke="#fff" stroke-width="3"/>
+        <circle cx="32.2" cy="15.8" r="2" fill="#fff"/>
+      </svg>
+      <span>Instagram</span>
+    </a>
+  </nav>
+
+
+</main>
+
+<script>
+(function () {
+  var T = {
+    es: {
+      title: "Cabaña Yaxché · Cabañas Aldea Maya",
+      tagline: "Tu hogar lejos de casa",
+      p1: "En Cabañas Aldea Maya nos esforzamos cada día para brindarte una estancia cómoda, placentera e inolvidable, donde puedas sentirte como en casa y disfrutar de la belleza de la Selva Maya.",
+      headline: "Tu opinión es nuestro mejor regalo.",
+      p2: "Tus comentarios nos ayudan a seguir mejorando y, al compartir tu experiencia, permites que otros viajeros descubran este rincón especial de la Selva Maya.",
+      cta: "¡Comparte tu experiencia!",
+      thanks: "Gracias por elegirnos. ¡Esperamos verte pronto!",
+      nav: "Reseñas"
+    },
+    en: {
+      title: "Yaxché Cabin · Cabañas Aldea Maya",
+      tagline: "Your home away from home",
+      p1: "At Cabañas Aldea Maya we strive every day to give you a comfortable, pleasant and unforgettable stay, where you can feel at home and enjoy the beauty of the Maya Jungle.",
+      headline: "Your opinion is our best gift.",
+      p2: "Your feedback helps us keep improving, and by sharing your experience you let other travelers discover this special corner of the Maya Jungle.",
+      cta: "Share your experience!",
+      thanks: "Thank you for choosing us. We hope to see you soon!",
+      nav: "Reviews"
+    },
+    fr: {
+      title: "Cabaña Yaxché · Cabañas Aldea Maya",
+      tagline: "Votre maison loin de chez vous",
+      p1: "À Cabañas Aldea Maya, nous nous efforçons chaque jour de vous offrir un séjour confortable, agréable et inoubliable, où vous pourrez vous sentir comme chez vous et profiter de la beauté de la Selva Maya.",
+      headline: "Votre avis est notre plus beau cadeau.",
+      p2: "Vos commentaires nous aident à nous améliorer et, en partageant votre expérience, vous permettez à d'autres voyageurs de découvrir ce coin spécial de la Selva Maya.",
+      cta: "Partagez votre expérience !",
+      thanks: "Merci de nous avoir choisis. Nous espérons vous revoir bientôt !",
+      nav: "Avis"
+    },
+    de: {
+      title: "Cabaña Yaxché · Cabañas Aldea Maya",
+      tagline: "Ihr Zuhause fern der Heimat",
+      p1: "In den Cabañas Aldea Maya bemühen wir uns jeden Tag, Ihnen einen komfortablen, angenehmen und unvergesslichen Aufenthalt zu bieten, bei dem Sie sich wie zu Hause fühlen und die Schönheit des Maya-Dschungels genießen können.",
+      headline: "Ihre Meinung ist unser schönstes Geschenk.",
+      p2: "Ihr Feedback hilft uns, uns stetig zu verbessern, und indem Sie Ihre Erfahrung teilen, ermöglichen Sie anderen Reisenden, diesen besonderen Ort im Maya-Dschungel zu entdecken.",
+      cta: "Teilen Sie Ihre Erfahrung!",
+      thanks: "Danke, dass Sie sich für uns entschieden haben. Wir freuen uns auf ein baldiges Wiedersehen!",
+      nav: "Bewertungen"
+    },
+    da: {
+      title: "Cabaña Yaxché · Cabañas Aldea Maya",
+      tagline: "Dit hjem væk fra hjemmet",
+      p1: "På Cabañas Aldea Maya gør vi hver dag vores bedste for at give dig et behageligt, rart og uforglemmeligt ophold, hvor du kan føle dig hjemme og nyde skønheden i Maya-junglen.",
+      headline: "Din mening er vores bedste gave.",
+      p2: "Dine kommentarer hjælper os med at blive bedre, og når du deler din oplevelse, lader du andre rejsende opdage dette særlige hjørne af Maya-junglen.",
+      cta: "Del din oplevelse!",
+      thanks: "Tak fordi du valgte os. Vi glæder os til at se dig snart!",
+      nav: "Anmeldelser"
+    }
+  };
+
+  var SUPPORTED = Object.keys(T);
+  var DEFAULT = "en";   // idioma si el visitante usa uno no disponible
+
+  function detect() {
+    // 1) ?lang=xx  2) elección guardada  3) idioma del navegador/país
+    try {
+      var q = new URLSearchParams(location.search).get("lang");
+      if (q && SUPPORTED.indexOf(q.slice(0, 2).toLowerCase()) > -1) return q.slice(0, 2).toLowerCase();
+    } catch (e) {}
+    try {
+      var saved = localStorage.getItem("aldea-lang");
+      if (saved && SUPPORTED.indexOf(saved) > -1) return saved;
+    } catch (e) {}
+    var prefs = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || DEFAULT];
+    for (var i = 0; i < prefs.length; i++) {
+      var code = String(prefs[i]).slice(0, 2).toLowerCase();
+      if (SUPPORTED.indexOf(code) > -1) return code;
+    }
+    return DEFAULT;
+  }
+
+  function apply(lang, persist) {
+    var d = T[lang] || T[DEFAULT];
+    document.documentElement.lang = lang;
+    document.title = d.title;
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      var k = el.getAttribute("data-i18n");
+      if (d[k]) el.textContent = d[k];
+    });
+    var nav = document.querySelector(".links");
+    if (nav) nav.setAttribute("aria-label", d.nav);
+    document.querySelectorAll(".langs button").forEach(function (b) {
+      b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false");
+    });
+    if (persist) { try { localStorage.setItem("aldea-lang", lang); } catch (e) {} }
+  }
+
+  document.querySelectorAll(".langs button").forEach(function (b) {
+    b.addEventListener("click", function () { apply(b.dataset.lang, true); });
+  });
+
+  apply(detect(), false);
+})();
+</script>
+</body>
+</html>
